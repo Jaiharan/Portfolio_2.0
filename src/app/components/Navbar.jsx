@@ -19,7 +19,7 @@ const Navbar = () => {
     console.log('Nav has changed:', nav);
   }, [nav]);
   return (
-    <div className='fixed w-full h-20 shadow-xl z-[100]'>
+    <div className='fixed w-full h-20 backdrop-blur shadow-xl z-[100]'>
       <div className='flex justify-between items-center w-full px-2 2xl:px-16'>
         <Image src={NavImage} alt='/' width="70" height="30" className=' rounded-md mt-1'/>
         <div>
@@ -81,10 +81,14 @@ const Navbar = () => {
               <p className='uppercase tracking-wider text-[#5651e5]'>Let's Connect</p>
               <div className=' flex items-center justify-between my-4 w-full sm:w-[80%]'>
                 <div className=' rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-200'>
-                  <FaLinkedinIn />
+                  <Link href='https://www.linkedin.com/in/jaiharan-s/'>
+                    <FaLinkedinIn />
+                  </Link>
                 </div>
                 <div className=' rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-200'>
-                  <FaGithub />
+                  <Link href='https://github.com/Jaiharan'>
+                    <FaGithub />
+                  </Link>
                 </div>
                 <div className=' rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-200'>
                   <IoIosMail />
