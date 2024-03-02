@@ -9,35 +9,47 @@ import { IoIosMail } from "react-icons/io";
 
 const Navbar = () => {
   const [nav,setNav] = useState(false);
+  const [shadow,setShadow] = useState(false);
 
   const handleNav = () => {
     setNav(!nav);
   }
 
   useEffect(() => {
+    const handleShadow = () => {
+      if (window.scrollY >= 90) {
+        setShadow(true);
+      } else {
+        setShadow(false);
+      }
+    }
+    window.addEventListener('scroll',handleShadow);
+  },[])
+
+  useEffect(() => {
     // Your side effect or action when nav changes
     console.log('Nav has changed:', nav);
   }, [nav]);
   return (
-    <div className='fixed w-full h-20 backdrop-blur shadow-xl z-[100]'>
+    <div className={ shadow ? 'fixed w-full h-20 backdrop-blur shadow-xl z-[100]' : 'fixed w-full h-20 backdrop-blur z-[100]'}>
       <div className='flex justify-between items-center w-full px-2 2xl:px-16'>
         <Image src={NavImage} alt='/' width="70" height="30" className=' rounded-md mt-1'/>
         <div>
           <ul className='hidden md:flex'>
             <Link href='/' >
-              <li className=' ml-10 text-sm uppercase hover:border-b'>Home</li>
+              <li className=' ml-10 text-sm uppercase hover:border-b hover:text-[#5651e5] hover:font-semibold hover:scale-105 ease-in duration-200'>Home</li>
             </Link>
-            <Link href='/' >
-              <li className=' ml-10 text-sm uppercase hover:border-b'>About</li>
+            <Link href='/#about' >
+              <li className=' ml-10 text-sm uppercase hover:border-b hover:text-[#5651e5] hover:font-semibold hover:scale-105 ease-in duration-200'>About</li>
             </Link>
-            <Link href='/' >
-              <li className=' ml-10 text-sm uppercase hover:border-b'>Skills</li>
+            <Link href='/#skills' >
+              <li className=' ml-10 text-sm uppercase hover:border-b hover:text-[#5651e5] hover:font-semibold hover:scale-105 ease-in duration-200'>Skills</li>
             </Link>
-            <Link href='/' >
-              <li className=' ml-10 text-sm uppercase hover:border-b'>Projects</li>
+            <Link href='/#projects' >
+              <li className=' ml-10 text-sm uppercase hover:border-b hover:text-[#5651e5] hover:font-semibold hover:scale-105 ease-in duration-200'>Projects</li>
             </Link>
-            <Link href='/' >
-              <li className=' ml-10 text-sm uppercase hover:border-b'>Contact</li>
+            <Link href='/#contact' >
+              <li className=' ml-10 text-sm uppercase hover:border-b hover:text-[#5651e5] hover:font-semibold hover:scale-105 ease-in duration-200'>Contact</li>
             </Link>
           </ul>
           <div onClick={handleNav} className=' md:hidden'>
@@ -64,16 +76,16 @@ const Navbar = () => {
               <Link href='/'>
                 <li className=' py-3 text-sm'>Home</li>
               </Link>
-              <Link href='/'>
+              <Link href='/#about'>
                 <li className=' py-3 text-sm'>About</li>
               </Link>
-              <Link href='/'>
+              <Link href='/#skills'>
                 <li className=' py-3 text-sm'>Skills</li>
               </Link>
-              <Link href='/'>
+              <Link href='/#projects'>
                 <li className=' py-3 text-sm'>Projects</li>
               </Link>
-              <Link href='/'>
+              <Link href='/#contact'>
                 <li className=' py-3 text-sm'>Contact</li>
               </Link>
             </ul>
@@ -91,10 +103,14 @@ const Navbar = () => {
                   </Link>
                 </div>
                 <div className=' rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-200'>
-                  <IoIosMail />
+                  <Link href='mailto:jaiharan1618@gmail.com'>
+                    <IoIosMail />
+                  </Link>
                 </div>
                 <div className=' rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-200'>
-                  <FaInstagram />
+                  <Link href='https://www.instagram.com/jai.__.725/'>
+                    <FaInstagram />
+                  </Link>
                 </div>
               </div>
             </div>
